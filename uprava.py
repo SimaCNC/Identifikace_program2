@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-slozka = r"D:\Škola\8.Semestr\Identifikace_a_simulace\program2\SIM0370" #zde je potreba zadat adresa s daty s pripoonou .txt
+slozka = os.getcwd() #zde je python skript primo ve slozce
 nova_slozka = os.path.join(slozka, "upravene_data")
 
 if not os.path.exists(nova_slozka):
