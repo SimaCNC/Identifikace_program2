@@ -1,11 +1,9 @@
 import os
-import re #regular expression
+import re 
 import pandas as pd
 from math import pi
 from scipy.signal import correlate
 import numpy as np
-
-
 
 def extrahuj_frekvenci(nazev):
     """
@@ -102,7 +100,6 @@ for soubor, frekvence in seznam_souboru:
         doba_vzorku = cas.iloc[1] - cas.iloc[0]
         frekvence_vzorkovani = 1/doba_vzorku
 
-        #krizova korelace
         korelace = correlate(ch_a_use, ch_b_use, mode='full')
 
         zpozdeni = np.arange(-len(ch_a_use)+1, len(ch_a_use))
@@ -114,15 +111,11 @@ for soubor, frekvence in seznam_souboru:
           
         casove_zpozdeni = posun_v_case * doba_vzorku
 
-        perioda = 1 / frekvence  # frekvence je z názvu souboru
+        perioda = 1 / frekvence  # frekvence je z nazvu souboru
         fazovy_posun_stupne = (casove_zpozdeni / perioda) * 360
         fazovy_posun_stupne = ((fazovy_posun_stupne + 180) % 360) - 180
         vysledky_PhaseShiftStupne.append(fazovy_posun_stupne)
         
-
-        
-        
-
         novy_soubor = os.path.splitext(soubor)[0] + ".xlsx"
         cesta_novy_soubor = os.path.join(nova_slozka, novy_soubor)
         df.to_excel(cesta_novy_soubor, index=False)
@@ -155,8 +148,3 @@ posun_df.to_excel(posun_soubor, index=False, header=False)
 
 
 print("hotovsono")
-
-
-
-
-        
